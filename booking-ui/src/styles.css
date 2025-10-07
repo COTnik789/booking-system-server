@@ -1,0 +1,248 @@
+:root {
+    /* палитра */
+    --bg: #f7f7fb;
+    --surface: #ffffff;
+    --text: #0f172a;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --primary: #2563eb;
+    --primary-contrast: #ffffff;
+    --danger: #b91c1c;
+    --shadow: 0 4px 16px rgba(17, 24, 39, 0.06);
+
+    /* совместимость (если где-то осталось использование --card) */
+    --card: var(--surface);
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans",
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+/* контейнер и сетка */
+.container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 16px;
+}
+
+/* карточки */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+.pad { padding: 16px; }
+.mt { margin-top: 16px; }
+.mb { margin-bottom: 12px; }
+
+/* формы и элементы */
+.field { display: grid; gap: 6px; margin: 8px 0; }
+.field-label { font-size: 12px; color: var(--muted); }
+
+.input, .select {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    color: var(--text);
+    font: inherit;
+}
+.input:focus, .select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-actions {
+    display: flex; gap: 8px; justify-content: flex-end; margin-top: 8px;
+}
+
+/* кнопки */
+.btn, .button, .primary, .danger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    font: inherit;
+}
+.btn:hover { filter: brightness(0.98); }
+
+.primary {
+    background: var(--primary);
+    color: var(--primary-contrast);
+    border-color: var(--primary);
+}
+.danger {
+    background: #fff5f5;
+    color: var(--danger);
+    border-color: #fca5a5;
+}
+
+/* текстовые утилиты */
+.small { font-size: 12px; }
+.muted { color: var(--muted); }
+
+/* список и элементы */
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+}
+.list-item {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    background: var(--surface);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.list-item.active {
+    background: rgba(37, 99, 235, 0.1);
+    border-color: var(--primary);
+}
+
+/* заголовки */
+h2 {
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+}
+
+/* уведомления (alert / toast) */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-weight: 500;
+    color: #fff;
+    animation: fadeInOut 3s ease forwards;
+    z-index: 1000;
+}
+.alert.success { background: #16a34a; }
+.alert.error { background: #dc2626; }
+.alert.info { background: #2563eb; }
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    10%, 90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* ошибки */
+.error {
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    color: #9f1239;
+    padding: 10px 12px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+
+/* доступность (Availability) */
+.availability .filters {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.availability .intervals {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+}
+.availability .interval {
+    padding: 10px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+/* совместимость react-datepicker */
+.react-datepicker-wrapper .input { width: 100%; }
+
+/* ===== Header ===== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+}
+
+.brand {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.userbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-label {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.user-input {
+    width: 180px;
+    height: 36px;
+    padding: 8px 10px;
+    font-size: 14px;
+}
+
+@media (max-width: 640px) {
+    .header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .userbox {
+        justify-content: space-between;
+    }
+    .user-input {
+        width: 100%;
+    }
+}
+
+.warning {
+    background: #fef9c3;
+    border: 1px solid #facc15;
+    color: #854d0e;
+    padding: 10px 12px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
